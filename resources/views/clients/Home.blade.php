@@ -1,6 +1,6 @@
 @extends('clients.layouts.master')
 @section('title') 
-<title> Trang Chu | {{$title}}</title>
+<title> Trang Chủ </title>
 @endsection
 @section('css')
 <link href="assets/libs/jsvectormap/jsvectormap.min.css" rel="stylesheet" type="text/css" />

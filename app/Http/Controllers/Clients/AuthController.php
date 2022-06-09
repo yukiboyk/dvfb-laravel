@@ -2,34 +2,35 @@
 
 namespace App\Http\Controllers\Clients;
 
-use App\Models\Settings;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 
+////xử lí việc register and login
 class AuthController extends Controller
-{
-    public function __construct()
-    {
-        $this->caidat = New Settings();
-        $this->caidat = $this->caidat->first();
-    }
-    public function indexLogin()
-    {
-        $title = $this->caidat->name_web;
-        return view('clients.auth.login',compact('title'));
-    }
-    public function home() 
-    {
-        $title = $this->caidat->name_web;
-        return view('clients.Home',compact('title'));
-    }
-    public function indexReg()
+{ 
+
+    public function showFormRegister()
     {
         return view('clients.auth.register');
-    }  
-
-    public function submitReg(Request $request)
-    {
-        dd($request->all());
     }
+    
+    public function rqRegister(RegisterRequest $request)
+    {
+        // dd($request->all());
+        $data = $request->all();
+        $createUser = User::create($data);
+        if ($createUser) {
+            auth()->login($createUser);
+            return redirect()->route('homeDashboard');
+        }
+         return redirect()->back();
+    }
+
+    public function showFormLogin()
+    {
+        return view('clients.auth.login');
+    }
+   
 }
