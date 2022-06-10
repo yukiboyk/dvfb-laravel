@@ -8,8 +8,8 @@ use App\Http\Controllers\Clients\HomeController;
 Route::middleware(['XSS'])->prefix('Auth')->group(function () {
     Route::get('/login',[AuthController::class,'showFormLogin'])->name('showFormLogin');
     Route::get('/register',[AuthController::class,'showFormRegister'])->name('showFormRegister');
-
     Route::post('/register', [AuthController::class,'rqRegister'])->name('rqRegister');
+    Route::post('/login',[AuthController::class,'rqLogin'])->name('rqLogin');
 });
 
 Route::middleware(['XSS', 'auth'])->prefix('system')->group(function () {

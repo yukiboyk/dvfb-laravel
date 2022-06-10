@@ -6,11 +6,14 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+     
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -42,6 +45,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'role' => 'string'
     ];
 
     public function setPasswordAttribute($value){
@@ -49,9 +53,15 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function setUsernameAttribute($value){
-
-        $this->attributes['username'] = strtolower($value);
+    protected function nameRole(): Attribute
+    {   
+        return Attribute::make(function () {
+            return match((int)$this->role) {
+                0 => 'Thành viên',
+                9 => 'Quản trị viên',
+                default => 'unknown role'
+            };
+        });
     }
 
 

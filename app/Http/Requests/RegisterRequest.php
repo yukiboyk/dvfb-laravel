@@ -24,8 +24,8 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullname' => 'required',
-            'username' => 'required|string|regex:/^[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*$/|max:12|unique:users,username',
+            'fullname' => 'required|string',
+            'username' => 'required|string|regex:/^[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*$/|min:4|max:12|unique:users,username',
             'email' => 'required|email:filter|unique:users,email',
             'password' => 'required|string|min:3',
 
@@ -37,11 +37,11 @@ class RegisterRequest extends FormRequest
            'required' => 'Vui lòng nhập vào trường :attribute',
            'max' => ':attribute không được vượt quá :max kí tự',
            'min' => 'Trường :attribute phải ít nhất :min kí tự',
-           'regex' => 'Định dạng không hợp lệ',
-           'same' => 'mật khẩu nhập lại không khớp',
+           'regex' => ':attribute Định dạng không hợp lệ',
+        //    'same' => 'mật khẩu nhập lại không khớp',
            'email' => ':attribute không hợp lệ',
            'unique' => ':attribute này đã tồn tại trên hệ thống',
-           'string' => ':attribute không đúng định dạng string'
+           'string' => ':attribute không đúng định dạng st'
         ];
 
     }
@@ -49,6 +49,7 @@ class RegisterRequest extends FormRequest
     public function attributes()
     {
         return [
+           'email' => 'Email',
            'username' => 'Tên tài khoản',
            'password' => 'Mật khẩu',
            'fullname' => 'Họ tên'

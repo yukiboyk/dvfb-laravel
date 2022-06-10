@@ -42,13 +42,20 @@
                                 <h5 class="text-primary">Welcome Back !</h5>
                                 <p class="text-muted">Sign in to continue to Velzon.</p>
                             </div>
+                            @if (session('error'))
+                            <div class="container">
+                                <div class="alert alert-danger">
+                                 {{session('error')}}
+                             </div>
+                         </div>
+                            @endif
                             <div class="p-2 mt-4">
-                                <form action=" " method="POST">
+                                <form action="{{route('rqLogin')}}" method="POST">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="username" class="form-label">Username</label>
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', 'admin@themesbrand.com') }}" id="username" name="email" placeholder="Enter username">
-                                        @error('email')
+                                        <label for="username" class="form-label">Tên Tài Khoản</label>
+                                        <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('email') }}" id="username" name="username" placeholder="Nhập Tài Khoản" required>
+                                        @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -56,12 +63,9 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <div class="float-end">
-                                            <a href="auth-pass-reset-basic" class="text-muted">Forgot password?</a>
-                                        </div>
-                                        <label class="form-label" for="password-input">Password</label>
+                                        <label class="form-label" for="password-input">Mật Khẩu</label>
                                         <div class="position-relative auth-pass-inputgroup mb-3">
-                                            <input type="password" class="form-control pe-5 @error('password') is-invalid @enderror" name="password" placeholder="Enter password" id="password-input" value="123456">
+                                            <input type="password" class="form-control pe-5 @error('password') is-invalid @enderror" name="password" id="password-input" placeholder="Nhập Mật Khẩu" required>
                                             <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                             @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -72,8 +76,11 @@
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
+                                        <input class="form-check-input" type="checkbox" name="remember_me">
                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
+                                        <div class="float-end">
+                                            <a href="auth-pass-reset-basic" class="text-muted">Forgot password?</a>
+                                        </div>
                                     </div>
 
                                     <div class="mt-4">

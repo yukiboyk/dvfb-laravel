@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Clients;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -14,7 +16,11 @@ class HomeController extends Controller
 
     public function homeDashboard() 
     {   
-        return view('clients.Home');
+        $fullname = Auth::user()->fullname;
+        $balance = Auth::user()->balance;
+        $role = Auth::user()->nameRole;
+
+        return view('clients.Home',compact('fullname','balance','role'));
     }
 
 }
