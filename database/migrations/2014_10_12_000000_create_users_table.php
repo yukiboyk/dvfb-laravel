@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('role')->default(0);
             $table->integer('balance')->default(0);
+            $table->integer('total_recharge')->default(0);
             $table->boolean('ban')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

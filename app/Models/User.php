@@ -45,7 +45,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'role' => 'string'
     ];
 
     public function setPasswordAttribute($value){
@@ -56,11 +55,19 @@ class User extends Authenticatable
     protected function nameRole(): Attribute
     {   
         return Attribute::make(function () {
-            return match((int)$this->role) {
-                0 => 'Thành viên',
-                1 => 'Đại Lý C1',
-                9 => 'Quản trị viên',
-                default => 'unknown role'
+            switch($this->role) {
+                case '0':
+                    return "Thành viên";
+                    break;
+                case '1':
+                    return "Đại Lý C1";
+                    break;
+                case '9':
+                    return "Quản trị viên";
+                    break;
+                default:
+                return "unknown role";
+                    break;
             };
         });
     }

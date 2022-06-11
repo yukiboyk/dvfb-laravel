@@ -251,13 +251,15 @@
                                 class="align-middle">Trang Cá Nhân</span></a>
                         <a class="dropdown-item" href="pages-profile"><i
                                 class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle">Số Dư : <b>{{$balance}} coin</b></span></a>
+                                class="align-middle">Số Dư : <b>{{Auth::user()->formatBalance}} coin</b></span></a>
                         <a class="dropdown-item" href="pages-profile-settings"><span
                                 class="badge bg-soft-success text-success mt-1 float-end">New</span><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Bảo Mật 2FA</span></a>
-                        <a class="dropdown-item" href="auth-lockscreen-basic"><i
-                                class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
+                            @if (Auth::user()->role === 9)
+                            <a class="dropdown-item" href="auth-lockscreen-basic"><i
+                                class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle text-danger">Admin Panel</span></a> 
+                            @endif
                         <a class="dropdown-item " href="javascript:void();"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                 class="bx bx-power-off font-size-16 align-middle me-1"></i> <span
