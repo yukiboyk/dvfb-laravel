@@ -27,7 +27,7 @@ class AuthController extends Controller
             auth()->login($createUser);
             return redirect()->route('homeDashboard');
         }
-         return redirect()->back()->with('error','Lỗi Máy Chủ,Đăng Kí Thất Bại');
+         return redirect()->back()->with('message','Lỗi Máy Chủ,Đăng Kí Thất Bại');
     }
 
     public function showFormLogin()
@@ -46,12 +46,12 @@ class AuthController extends Controller
             'password' => $request->password
         ],$remember);
         if (!$check) {
-           return redirect()->back()->with('error','Tài Khoản Hoặc Mật khẩu không chính xác');
+           return redirect()->back()->with('message','Tài Khoản Hoặc Mật khẩu không chính xác');
         }
         return redirect()->route('homeDashboard');
          
         }catch (Exception $e) {
-            return redirect()->back()->with('error','Lỗi Máy Chủ,Đăng Kí Thất Bại');
+            return redirect()->back()->with('message',$e->getMessage());
         }
         
     }

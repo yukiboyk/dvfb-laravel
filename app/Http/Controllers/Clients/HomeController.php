@@ -17,10 +17,10 @@ class HomeController extends Controller
     public function homeDashboard() 
     {   
         $fullname = Auth::user()->fullname;
-        $balance = Auth::user()->balance;
+        $balance = Auth::user()->formatBalance;
         $role = Auth::user()->nameRole;
-
-        return view('clients.Home',compact('fullname','balance','role'));
+        $all = User::all();
+        return view('clients.Home',compact('fullname','balance','role','all'));
     }
 
 }

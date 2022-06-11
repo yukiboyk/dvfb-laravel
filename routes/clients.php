@@ -12,7 +12,7 @@ Route::middleware(['XSS'])->prefix('Auth')->group(function () {
     Route::post('/login',[AuthController::class,'rqLogin'])->name('rqLogin');
 });
 
-Route::middleware(['XSS', 'auth'])->prefix('system')->group(function () {
+Route::middleware(['XSS', 'checkUser.auth'])->prefix('system')->group(function () {
     Route::post('/logout',[LogoutController::class,'logout'])->name('logout');
     Route::get('/home',[HomeController::class,'homeDashboard'])->name('homeDashboard');
 

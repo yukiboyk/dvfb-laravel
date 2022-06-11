@@ -42,10 +42,10 @@
                                 <h5 class="text-primary">Welcome Back !</h5>
                                 <p class="text-muted">Sign in to continue to Velzon.</p>
                             </div>
-                            @if (session('error'))
+                            @if (Session::has('message'))
                             <div class="container">
                                 <div class="alert alert-danger">
-                                 {{session('error')}}
+                                 {{session('message')}}
                              </div>
                          </div>
                             @endif

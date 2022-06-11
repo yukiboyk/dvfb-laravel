@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|string|regex:/^[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*$/|max:12',
+            'username' => 'required|string|regex:/^[A-Za-z0-9]+(?:[_-][A-Za-z0-9]+)*$/|min:4|max:12',
             'password' => 'required|min:3',
         ];
     }
@@ -32,7 +32,9 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'Vui lòng nhập vào trường :attribute'
+            'required' => 'Vui lòng nhập vào trường :attribute',
+            'min' => 'Trường :attribute tối thiếu :min kí tự',
+            'max' => 'Trường :attribute tối đa :min kí tự',
         ];
     }
 }
