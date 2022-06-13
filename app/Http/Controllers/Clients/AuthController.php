@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Clients;
 
 use App\Models\User;
+use App\Models\Telegram;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
+use App\Notifications\SendTelegram;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterRequest;
-
 ////xử lí việc register and login
 class AuthController extends Controller
 { 
@@ -23,7 +24,9 @@ class AuthController extends Controller
         // dd($request->validated());
         $data = $request->validated();
         $createUser = User::create($data);
+        $createUser->notify(new SendTelegram($request->username));
         if ($createUser) {
+           
             auth()->login($createUser);
             return redirect()->route('homeDashboard');
         }
@@ -38,8 +41,6 @@ class AuthController extends Controller
     public function rqLogin(LoginRequest $request)
     {
         $request->flash();
-
-    try {
         $remember = $request->has('remember_me') ? true : false;
         $check = Auth::attempt([
             'username' => $request->username,
@@ -49,11 +50,21 @@ class AuthController extends Controller
            return redirect()->back()->with('message','Tài Khoản Hoặc Mật khẩu không chính xác');
         }
         return redirect()->route('homeDashboard');
-         
-        }catch (Exception $e) {
-            return redirect()->back()->with('message',$e->getMessage());
-        }
         
+    }
+
+    public function showFormResetPass()
+    {
+        return view('clients.auth.reset-password');
+    }
+
+    public function rqResetPass(Request $request)
+    {
+       $validate = $request->validate([
+               'email' => 'required|email:filter|exists:users,email'
+       ],[
+                'exists'=>'Khong ton tai email nay trong CSDL'
+       ]);
     }
    
 }

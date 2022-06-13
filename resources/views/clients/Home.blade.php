@@ -18,12 +18,12 @@
 </div>
 <!-- end page title -->
 <div class="row">
-    <div class="col-xxl-3 col-md-6">
+    <div class="col-xxl-3 col-md-4">
         <div class="card card-animate">
             <div class="card-body bg-soft-success">
                 <div class="d-flex mb-3">
                     <div class="flex-grow-1">
-                        <lord-icon src="https://cdn.lordicon.com/fhtaantg.json" trigger="loop"
+                        <lord-icon src="https://cdn.lordicon.com/qhviklyi.json" trigger="loop"
                             colors="primary:#405189,secondary:#0ab39c" style="width:55px;height:55px">
                         </lord-icon>
                     </div>
@@ -40,7 +40,7 @@
     </div>
     <!--end col-->
 
-    <div class="col-xxl-3 col-md-6">
+    <div class="col-xxl-3 col-md-4">
         <div class="card card-animate">
             <div class="card-body bg-soft-warning">
                 <div class="d-flex mb-3">
@@ -61,7 +61,27 @@
         <!--end card-->
     </div> 
     <!--end col-->
-   
+    <div class="col-xxl-3 col-md-4">
+        <div class="card card-animate">
+            <div class="card-body bg-soft-danger">
+                <div class="d-flex mb-3">
+                    <div class="flex-grow-1">
+                        <lord-icon src="https://cdn.lordicon.com/fhtaantg.json" trigger="loop"
+                            colors="primary:#405189,secondary:#0ab39c" style="width:55px;height:55px">
+                        </lord-icon>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <a href="javascript:void(0);" class="badge badge-soft-danger badge-border">Đơn Hàng</a>
+                    </div>
+                </div>
+                <h3 class="mb-2"><span class="counter-value" data-target="10">0</span><small
+                        class="text-muted fs-13"> đơn</small></h3>
+                <h6 class="text-muted mb-0">TỔNG ĐƠN HOÀN THÀNH</h6>
+            </div>
+        </div>
+        <!--end card-->
+    </div> 
+    <!--end col-->
 </div>
 <!--end row-->
 

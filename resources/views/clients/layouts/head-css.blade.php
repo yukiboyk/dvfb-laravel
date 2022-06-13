@@ -1,4 +1,4 @@
-@yield('css')
+@stack('css')
 <!-- Layout config Js -->
 <script src="{{ URL::asset('assets/js/layout.js') }}"></script>
 <!-- Bootstrap Css -->
@@ -11,6 +11,7 @@
 <link href="{{ URL::asset('assets/css/custom.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 {{-- add font --}}
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&family=Roboto+Condensed&display=swap" rel="stylesheet">    
+
 <style>
 
     body{

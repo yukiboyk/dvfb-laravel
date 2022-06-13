@@ -10,6 +10,8 @@ Route::middleware(['XSS'])->prefix('Auth')->group(function () {
     Route::get('/register',[AuthController::class,'showFormRegister'])->name('showFormRegister');
     Route::post('/register', [AuthController::class,'rqRegister'])->name('rqRegister');
     Route::post('/login',[AuthController::class,'rqLogin'])->name('rqLogin');
+    Route::get('/reset-password',[AuthController::class,'showFormResetPass'])->name('showFormResetPass');
+    Route::post('/reset-password',[AuthController::class,'rqResetPass'])->name('rqResetPass');
 });
 
 Route::middleware(['XSS', 'checkUser.auth'])->prefix('system')->group(function () {

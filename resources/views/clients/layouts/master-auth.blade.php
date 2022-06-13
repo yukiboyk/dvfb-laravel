@@ -17,6 +17,9 @@
 
     @yield('content')
 
+
+    @include('clients.layouts.alert')
     @include('clients.layouts.vendor-scripts')
+   
     </body>
 </html>

@@ -79,7 +79,7 @@
                                         <input class="form-check-input" type="checkbox" name="remember_me">
                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                         <div class="float-end">
-                                            <a href="auth-pass-reset-basic" class="text-muted">Forgot password?</a>
+                                            <a href="{{route('showFormResetPass')}}" class="text-muted">Forgot password?</a>
                                         </div>
                                     </div>
 
@@ -125,9 +125,9 @@
     <!-- end Footer -->
 </div>
 @endsection
-@section('script')
-<script src="assets/libs/particles.js/particles.js.min.js"></script>
-<script src="assets/js/pages/particles.app.js"></script>
-<script src="assets/js/pages/password-addon.init.js"></script>
 
-@endsection
+@push('script')
+<script src="{{url('assets/libs/particles.js/particles.js.min.js')}}"></script>
+<script src="{{url('assets/js/pages/particles.app.js')}}"></script>
+<script src="{{url('assets/js/pages/password-addon.init.js')}}"></script>
+@endpush
