@@ -2,9 +2,9 @@
 @section('title') 
 <title> Trang Chủ </title>
 @endsection
-@section('css')
+@push('css')
 <link href="assets/libs/swiper/swiper.min.css" rel="stylesheet" type="text/css" />
-@endsection
+@endpush
 @section('content')
 <!-- start page title -->
 <div class="row">
@@ -86,7 +86,7 @@
 <!--end row-->
 
 @endsection
-@section('script')
+@push('script')
 <!-- apexcharts -->
 <script src="{{ URL::asset('/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
 <script src="{{ URL::asset('/assets/libs/jsvectormap/jsvectormap.min.js') }}"></script>
@@ -94,4 +94,4 @@
 <!-- dashboard init -->
 <script src="{{ URL::asset('/assets/js/pages/crypto-transactions.init.js') }}"></script>
 <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
-@endsection
+@endpush

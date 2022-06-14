@@ -73,7 +73,7 @@ class AuthController extends Controller
            'token' => Str::random(120),
        ]);
     if ($passwordReset) {
-       Mail::to($request->email)->send(new ResetPassword($passwordReset->token,md5($request->email)));
+       Mail::to($request->email)->send(new ResetPassword($passwordReset->token));
        return redirect()->back()->with('success','Chúng tôi đã gửi link verify tới email '.$request->email.' vui lòng kiểm tra email và làm theo hướng dẫn');
     }
     }
