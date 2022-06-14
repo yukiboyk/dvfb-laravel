@@ -42,13 +42,7 @@
                                 <h5 class="text-primary">Welcome Back !</h5>
                                 <p class="text-muted">Sign in to continue to Velzon.</p>
                             </div>
-                            @if (Session::has('message'))
-                            <div class="container">
-                                <div class="alert alert-danger">
-                                 {{session('message')}}
-                             </div>
-                         </div>
-                            @endif
+                           
                             <div class="p-2 mt-4">
                                 <form action="{{route('rqLogin')}}" method="POST">
                                     @csrf
@@ -79,7 +73,7 @@
                                         <input class="form-check-input" type="checkbox" name="remember_me">
                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                         <div class="float-end">
-                                            <a href="{{route('showFormResetPass')}}" class="text-muted">Forgot password?</a>
+                                            <a href="{{route('showFormForgotPass')}}" class="text-muted">Forgot password?</a>
                                         </div>
                                     </div>
 

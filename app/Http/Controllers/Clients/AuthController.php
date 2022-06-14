@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Clients;
 
 use App\Models\User;
 use App\Models\Telegram;
+use App\Mail\ResetPassword;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\PasswordReset;
+use Illuminate\Support\Carbon;
 use App\Http\Requests\LoginRequest;
 use App\Notifications\SendTelegram;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\RegisterRequest;
 ////xử lí việc register and login
 class AuthController extends Controller
@@ -30,7 +35,7 @@ class AuthController extends Controller
             auth()->login($createUser);
             return redirect()->route('homeDashboard');
         }
-         return redirect()->back()->with('message','Lỗi Máy Chủ,Đăng Kí Thất Bại');
+         return redirect()->back()->with('error','Lỗi Máy Chủ,Đăng Kí Thất Bại');
     }
 
     public function showFormLogin()
@@ -47,24 +52,59 @@ class AuthController extends Controller
             'password' => $request->password
         ],$remember);
         if (!$check) {
-           return redirect()->back()->with('message','Tài Khoản Hoặc Mật khẩu không chính xác');
+           return redirect()->back()->with('error','Tài Khoản Hoặc Mật khẩu không chính xác');
         }
         return redirect()->route('homeDashboard');
         
     }
 
-    public function showFormResetPass()
+    public function showFormForgotPass()
     {
-        return view('clients.auth.reset-password');
+        return view('clients.auth.forgot-password');
     }
 
-    public function rqResetPass(Request $request)
+    public function rqForgotPass(Request $request)
     {
        $validate = $request->validate([
-               'email' => 'required|email:filter|exists:users,email'
+            'email' => 'required|email:filter|exists:users,email'
        ],[
-                'exists'=>'Khong ton tai email nay trong CSDL'
+            'exists'=>'Địa chỉ email này không tồn tại trên hệ thống'
        ]);
+  
+       $passwordReset = PasswordReset::updateOrCreate([
+           'email' => $request->email,
+       ],[
+           'token' => Str::random(120),
+       ]);
+    if ($passwordReset) {
+       Mail::to($request->email)->send(new ResetPassword($passwordReset->token,md5($request->email)));
+       return redirect()->back()->with('success','Chúng tôi đã gửi link verify tới email '.$request->email.' vui lòng kiểm tra email và làm theo hướng dẫn');
+    }
+    }
+     
+    public function showFormResetPass($token)
+    {   
+        $passwordReset = PasswordReset::where('token', $token)->firstOrFail();
+        return view('clients.auth.reset-password',compact('token'));   
     }
    
+    public function rqResetPass(Request $request)
+    {
+        $validated = $request->validate([
+            'password' => 'required|min:3',
+            'repassword' => 'required|same:password',
+            'token' => 'required'
+        ]);
+        $checkToken = PasswordReset::where('token', $request->token)->firstOrFail();
+        if (Carbon::parse($checkToken->created_at)->addMinutes(1)->isPast()) {
+            $checkToken->delete();
+            return redirect()->route('showFormForgotPass')->with('error','Mã Xác thực đặt lại mật khẩu đã hết hạn vui lòng xác minh lại');
+        }
+        $user = User::where('email', $checkToken->email)->firstOrFail();
+        $updatePasswordUser = $user->update($request->only('password'));
+        $checkToken->delete();
+
+        return redirect()->route('showFormLogin')->with('success','Mật Khẩu đã được thay đổi bạn có thể đăng nhập');
+    }
+
 }

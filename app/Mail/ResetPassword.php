@@ -2,23 +2,24 @@
 
 namespace App\Mail;
 
+use App\Models\PasswordReset;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class ResetPassword extends Mailable
 {
     use Queueable, SerializesModels;
-
+    protected $token;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -28,6 +29,12 @@ class ResetPassword extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        $url = url('/Auth/reset-password/'.$this->token);
+        return $this
+        ->subject('ĐẶT LẠI MẬT KHẨU')
+        // ->view('email.reset-pw')
+        ->markdown('email.reset-pw', [
+            'url' => $url,
+        ]);
     }
 }
