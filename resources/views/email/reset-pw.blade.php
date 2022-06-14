@@ -40,12 +40,12 @@
                                     <td style="height:40px;">&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td style="padding:0 35px;">
+                                    <td style="text-align: center;padding:0 35px;">
                                         <h1 style="color:#1e1e2d; font-weight:500; margin:0;font-size:32px;font-family:'Rubik',sans-serif;">Xin Chào Khách Hàng !</h1>
                                         <span
                                             style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                         <p style="color:#455056; font-size:15px;line-height:24px; margin:0;">
-                                        Chúng tôi có nhận được yêu cầu đặt lại mật khẩu, nếu là bạn hãy nhấp vào link bên dưới để liên kết đặt lại mật khẩu.xin cảm ơn
+                                        Chúng tôi có nhận được yêu cầu đặt lại mật khẩu, nếu là bạn hãy nhấp vào link bên dưới để liên kết đặt lại mật khẩu !
                                         </p>
                                         <a href="{{$url}}"
                                         style="background:#20e277;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 24px;display:inline-block;border-radius:50px;">Reset

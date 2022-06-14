@@ -11,9 +11,11 @@ use App\Models\PasswordReset;
 use Illuminate\Support\Carbon;
 use App\Http\Requests\LoginRequest;
 use App\Notifications\SendTelegram;
+use App\Http\Requests\ResetPass;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\ForgotPassword;
 use App\Http\Requests\RegisterRequest;
 ////xử lí việc register and login
 class AuthController extends Controller
@@ -63,14 +65,8 @@ class AuthController extends Controller
         return view('clients.auth.forgot-password');
     }
 
-    public function rqForgotPass(Request $request)
+    public function rqForgotPass(ForgotPassword $request)
     {
-       $validate = $request->validate([
-            'email' => 'required|email:filter|exists:users,email'
-       ],[
-            'exists'=>'Địa chỉ email này không tồn tại trên hệ thống'
-       ]);
-  
        $passwordReset = PasswordReset::updateOrCreate([
            'email' => $request->email,
        ],[
@@ -88,15 +84,10 @@ class AuthController extends Controller
         return view('clients.auth.reset-password',compact('token'));   
     }
    
-    public function rqResetPass(Request $request)
+    public function rqResetPass(ResetPass $request)
     {
-        $validated = $request->validate([
-            'password' => 'required|min:3',
-            'repassword' => 'required|same:password',
-            'token' => 'required'
-        ]);
         $checkToken = PasswordReset::where('token', $request->token)->firstOrFail();
-        if (Carbon::parse($checkToken->created_at)->addMinutes(1)->isPast()) {
+        if (Carbon::parse($checkToken->created_at)->addMinutes(15)->isPast()) {
             $checkToken->delete();
             return redirect()->route('showFormForgotPass')->with('error','Mã Xác thực đặt lại mật khẩu đã hết hạn vui lòng xác minh lại');
         }

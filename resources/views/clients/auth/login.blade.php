@@ -71,9 +71,9 @@
 
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember_me">
-                                        <label class="form-check-label" for="auth-remember-check">Remember me</label>
+                                        <label class="form-check-label" for="auth-remember-check">Nhớ tôi?</label>
                                         <div class="float-end">
-                                            <a href="{{route('showFormForgotPass')}}" class="text-muted">Forgot password?</a>
+                                            <a href="{{route('showFormForgotPass')}}" class="text-muted">Quên Mật Khẩu?</a>
                                         </div>
                                     </div>
 
