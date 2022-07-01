@@ -4,7 +4,7 @@
             <div class="d-flex">
                 <!-- LOGO -->
                 <div class="navbar-brand-box horizontal-logo">
-                    <a href="index" class="logo logo-dark">
+                    <a href="{{route('homeDashboard')}}" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="{{ URL::asset('assets/images/logo-sm.png') }}" alt="" height="22">
                         </span>
@@ -13,7 +13,7 @@
                         </span>
                     </a>
 
-                    <a href="index" class="logo logo-light">
+                    <a href="{{route('homeDashboard')}}" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="{{ URL::asset('assets/images/logo-sm.png') }}" alt="" height="22">
                         </span>
@@ -239,20 +239,20 @@
                             <img class="rounded-circle header-profile-user" src="{{url('images/avt197.jpg')}}"
                                 alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{$fullname}}</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{!! $role !!}</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{Auth::user()->fullname}}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 text-muted user-name-sub-text">{!! Auth::user()->nameRole !!}</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <a class="dropdown-item" href="pages-profile"><i
+                        <a class="dropdown-item" href="{{route('viewProfile')}}"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Trang Cá Nhân</span></a>
                         <a class="dropdown-item" href="pages-profile"><i
                                 class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Số Dư : <b>{{Auth::user()->formatBalance}} coin</b></span></a>
-                        <a class="dropdown-item" href="pages-profile-settings"><span
+                        <a class="dropdown-item" href="{{route('showSetting2FA')}}"><span
                                 class="badge bg-soft-success text-success mt-1 float-end">New</span><i
                                 class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Bảo Mật 2FA</span></a>

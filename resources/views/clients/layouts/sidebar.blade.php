@@ -3,7 +3,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index" class="logo logo-dark">
+        <a href="{{route('homeDashboard')}}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ URL::asset('images/logo1.png') }}" alt="" height="15">
             </span>
@@ -12,7 +12,7 @@
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="index" class="logo logo-light">
+        <a href="{{route('homeDashboard')}}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ URL::asset('images/logo1.png') }}" alt="" height="15">
             </span>
@@ -34,7 +34,7 @@
                 <li class="menu-title"><span>MENU</span></li>
                         <li class="nav-item">
                             <a class="nav-link menu-link "
-                                href="https://dvmxh2.cmsnt.site/client/home">
+                                href="{{route('homeDashboard')}}">
                                 <i class="menu-icon">
                                     <img width="100%" src="{{url('images/icon_home/home.svg')}}">
                                 </i> <span>Trang Chủ</span>
@@ -42,7 +42,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link "
-                                href="https://dvmxh2.cmsnt.site/client/home">
+                                href="{{route('viewProfile')}}">
                                 <i class="menu-icon">
                                     <img width="100%" src="{{url('images/icon_home/user-profile.svg')}}">
                                 </i> <span>Thông Tin Tài Khoản</span>
@@ -107,11 +107,11 @@
                                 id="yukidvtt">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="https://dvmxh2.cmsnt.site/client/recharge"
+                                        <a href=""
                                             class="nav-link ">Tăng Like Bài Viết</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="https://dvmxh2.cmsnt.site/client/nap-the"
+                                        <a href=""
                                             class="nav-link ">Tăng Phô Lâu</a>
                                     </li>
                                 </ul>

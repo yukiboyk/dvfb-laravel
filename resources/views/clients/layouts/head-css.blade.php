@@ -10,16 +10,22 @@
 <!-- custom Css-->
 <link href="{{ URL::asset('assets/css/custom.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 {{-- add font --}}
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&family=Roboto+Condensed&display=swap" rel="stylesheet">    
-
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&family=Roboto+Condensed&display=swap" rel="stylesheet">       
 <style>
-
+    html,
     body{
         font-family: 'Oswald', sans-serif;}
     .ribbon-box .ribbon-primary {
         background: #00266D;
     }
-
+    .ribbon-box .ribbon-primary.ribbon-shape::after {
+        border-left-color: #00266D;
+        border-bottom-color: #00266D;
+    }
+    .ribbon-box .ribbon-primary.ribbon-shape::before {
+        border-left-color: #00266D;
+        border-top-color: #00266D;
+    }
     [data-layout=vertical][data-sidebar=dark] .navbar-menu {
     
         background: linear-gradient(#00266D, #00266D, #10101F);

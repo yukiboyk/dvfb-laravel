@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'XSS' => \App\Http\Middleware\XSS::class,
         'checkUser.auth' => \App\Http\Middleware\CheckUserLogin::class,
+        '2fa' => \App\Http\Middleware\Google2FA::class,
     ];
 }

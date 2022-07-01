@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\Clients\AuthController;
 use App\Http\Controllers\Clients\HomeController;
+use App\Http\Controllers\Clients\TwoFaceAuthController;
 
 Route::middleware(['XSS'])->prefix('Auth')->group(function () {
     Route::get('/login',[AuthController::class,'showFormLogin'])->name('showFormLogin');
@@ -16,9 +16,13 @@ Route::middleware(['XSS'])->prefix('Auth')->group(function () {
     Route::post('/reset-password',[AuthController::class,'rqResetPass'])->name('rqResetPass');
 });
 
-Route::middleware(['XSS', 'checkUser.auth'])->prefix('system')->group(function () {
-    Route::post('/logout',[LogoutController::class,'logout'])->name('logout');
+Route::middleware(['checkUser.auth','2fa'])->prefix('system')->group(function () {
+    Route::post('/logout',[AuthController::class,'logout'])->name('logout');
     Route::get('/home',[HomeController::class,'homeDashboard'])->name('homeDashboard');
+    Route::get('/two-face-authentication',[TwoFaceAuthController::class,'showSetting2FA'])->name('showSetting2FA');
+    Route::post('/two-face-authentication',[TwoFaceAuthController::class,'enable2FA'])->name('enable2FA');
+    Route::get('/profile',[HomeController::class,'viewProfile'])->name('viewProfile');
+    Route::post('/change-password',[AuthController::class,'changePassword'])->name('changePassword');
 
 });
 

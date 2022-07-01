@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string("secret_code")->nullable();
+            $table->string("access_token")->unique()->nullable();;
+            $table->boolean('option_2fa')->default(false);
             $table->timestamps();
         });
     }

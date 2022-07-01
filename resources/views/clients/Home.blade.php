@@ -1,6 +1,6 @@
 @extends('clients.layouts.master')
 @section('title') 
-<title> Trang Chủ </title>
+<title> Trang Chủ | {{webSetting('name_website')}} </title>
 @endsection
 @push('css')
 <link href="assets/libs/swiper/swiper.min.css" rel="stylesheet" type="text/css" />

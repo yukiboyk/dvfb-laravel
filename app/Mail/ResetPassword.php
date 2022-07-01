@@ -31,9 +31,9 @@ class ResetPassword extends Mailable
     {
         $url = url('/Auth/reset-password/'.$this->token);
         return $this
-        ->subject('ĐẶT LẠI MẬT KHẨU')
+        ->subject('XÁC NHẬN ĐẶT LẠI MẬT KHẨU')
         // ->view('email.reset-pw')
-        ->markdown('email.reset-pw', [
+        ->markdown('email.forgotpassword', [
             'url' => $url,
         ]);
     }

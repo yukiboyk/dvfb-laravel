@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Clients;
 
+use App\Models\Logs;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,17 @@ class HomeController extends Controller
         $total_recharge = Auth::user()->total_recharge;
         $role = Auth::user()->nameRole;
         return view('clients.Home',compact('fullname','balance','role','total_recharge'));
+    }
+
+    public function viewProfile()
+    {
+        $checkLogs = Logs::where('username',Auth::user()->username)
+        ->orderBy('id', 'DESC')
+        ->offset(0)
+        ->limit(10)
+        ->get();
+        
+        return view('clients.Profile',compact('checkLogs'));
     }
 
 }
