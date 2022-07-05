@@ -1,0 +1,46 @@
+html,
+body{
+    font-family: 'Oswald', sans-serif;}
+.ribbon-box .ribbon-primary {
+    background: #00266D;
+}
+.ribbon-box .ribbon-primary.ribbon-shape::after {
+    border-left-color: #00266D;
+    border-bottom-color: #00266D;
+}
+.ribbon-box .ribbon-primary.ribbon-shape::before {
+    border-left-color: #00266D;
+    border-top-color: #00266D;
+}
+
+.navbar-menu .navbar-nav .nav-link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.625rem 1.5rem;
+    color: var(--vz-vertical-menu-item-color);
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;}
+.navbar-menu .navbar-nav .nav-sm .nav-link {
+    padding: 0.55rem 1.5rem!important;
+    color: var(--vz-vertical-menu-sub-item-color);
+    white-space:pre-line;
+    position: relative;
+    font-size: .813rem;
+    font-family: 'Oswald', sans-serif; 
+
+}
+.menu-icon {
+    font-size: 16px;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    transition: transform 0.5s;
+    margin-right: 10px;
+    color: #6d8bb0;
+}

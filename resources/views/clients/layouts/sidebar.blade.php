@@ -41,34 +41,35 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link "
-                                href="{{route('viewProfile')}}">
+                            <a class="nav-link menu-link"  href="{{route('viewProfile')}}">
                                 <i class="menu-icon">
                                     <img width="100%" src="{{url('images/icon_home/user-profile.svg')}}">
                                 </i> <span>Thông Tin Tài Khoản</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#yukinaptien" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="recharge">
+                            <a class="nav-link menu-link"  href="{{route('viewProfile')}}">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/levels-up.svg')}}">
+                                </i> <span>Gói Tài Khoản</span>
+                            </a>
+                        </li>
+                    <li class="menu-title"><span>Nạp Tiền</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#yukinaptien">
                                 <i class="menu-icon">
                                     <img width="100%" src="{{url('images/icon_home/naptien.svg')}}">
                                 </i>
-                                <span>Nạp Tiền</span>
+                                <span>Nạp Bằng ATM - Ví</span>
                             </a>
-                            <div class="collapse menu-dropdown "
-                                id="yukinaptien">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href=""
-                                            class="nav-link ">Ngân Hàng & Ví Điện Tử</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href=""
-                                            class="nav-link ">Nạp Thẻ Cào</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#yukinaptien">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/nap-card.svg')}}">
+                                </i>
+                                <span>Nạp Bằng Card</span>
+                            </a>
                         </li>
 
                         <li class="menu-title"><span>DỊCH VỤ</span></li>
@@ -116,6 +117,142 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#yukidvin" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="b">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/instagram.svg')}}">
+                                </i>
+                                <span>Dịch Vụ Instagram</span>
+                            </a>
+                            <div class="collapse menu-dropdown "
+                                id="yukidvin">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href=""
+                                            class="nav-link ">Tăng Like Bài Viết</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href=""
+                                            class="nav-link ">Tăng Phô Lâu</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#yukidvtele" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="b">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/telegram.svg')}}">
+                                </i>
+                                <span>Dịch Vụ Telegram</span>
+                            </a>
+                            <div class="collapse menu-dropdown "
+                                id="yukidvtele">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href=""
+                                            class="nav-link ">Tăng Like Bài Viết</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href=""
+                                            class="nav-link ">Tăng Phô Lâu</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#yukidvyt" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="b">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/youtube.svg')}}">
+                                </i>
+                                <span>Dịch Vụ Youtube</span>
+                            </a>
+                            <div class="collapse menu-dropdown "
+                                id="yukidvyt">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href=""
+                                            class="nav-link ">Tăng Like Bài Viết</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href=""
+                                            class="nav-link ">Tăng Phô Lâu</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#yukidvtw" data-bs-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="b">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/twitter.svg')}}">
+                                </i>
+                                <span>Dịch Vụ Twitter</span>
+                            </a>
+                            <div class="collapse menu-dropdown "
+                                id="yukidvtw">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href=""
+                                            class="nav-link ">Tăng Like Bài Viết</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href=""
+                                            class="nav-link ">Tăng Phô Lâu</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="menu-title"><span>Dịch Vụ Khác</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/code-api.svg')}}">
+                                </i>
+                                <span>Shop Mã Nguồn</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/code-api-bank.svg')}}">
+                                </i>
+                                <span>Cho Thuê API bank</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/sim-card.svg')}}">
+                                </i>
+                                <span>Thuê Sim</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-title"><span>Hỗ Trợ</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/api.svg')}}">
+                                </i>
+                                <span>Tài Liệu API</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="">
+                                <i class="menu-icon">
+                                    <img width="100%" src="{{url('images/icon_home/support.svg')}}">
+                                </i>
+                                <span>Hỗ Trợ</span>
+                            </a>
                         </li>
 
             </ul>
