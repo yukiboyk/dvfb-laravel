@@ -28,11 +28,11 @@ class HomeController extends Controller
     {
         $checkLogs = Logs::where('username',Auth::user()->username)
         ->orderBy('id', 'DESC')
-        ->offset(0)
-        ->limit(10)
         ->get();
         
         return view('clients.Profile',compact('checkLogs'));
     }
+
+    
 
 }

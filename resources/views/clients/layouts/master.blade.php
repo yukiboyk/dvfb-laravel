@@ -37,7 +37,7 @@
     </div>
     <!-- END layout-wrapper -->
 
-
+    @include('clients.layouts.model')
     <!-- JAVASCRIPT -->
     @include('clients.layouts.alert')
     @include('clients.layouts.vendor-scripts')

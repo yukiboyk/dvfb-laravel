@@ -36,12 +36,8 @@ class AuthController extends Controller
         $createUser = User::create($data);
         // $createUser->notify(new SendTelegram($request->username));
         if ($createUser) {
-            $logs = Logs::create([
-                'username' => $request->username,
-                'ip' => $request->ip(),
-                'content' => 'Đăng kí tài khoản thành công',
-                'device' => $request->header('User-Agent'),
-            ]);
+            logsCreate('Đăng kí tài khoản thành công',$request->ip(), $request->header('User-Agent'));
+            
             auth()->login($createUser);
             return redirect()->route('homeDashboard');
         }
@@ -64,12 +60,7 @@ class AuthController extends Controller
         if (!$check) {
            return redirect()->back()->with('error','Tài Khoản Hoặc Mật khẩu không chính xác');
         }
-        $logs = Logs::create([
-            'username' => $request->username,
-            'ip' => $request->ip(),
-            'content' => 'Đăng Nhập Thành công',
-            'device' => $request->header('User-Agent'),
-        ]);
+        logsCreate('Đăng nhập vào website thành công',$request->ip(), $request->header('User-Agent'));
         return redirect()->route('homeDashboard');
         
     }
@@ -147,8 +138,8 @@ class AuthController extends Controller
             if( !$update ){
                 return response()->json(['status'=> 'fails','message'=>'Something went wrong, Failed to update password in db']);
             }else{
+                logsCreate('Thực hiện thay đổi mật khẩu thành công',$request->ip(), $request->header('User-Agent'));
                 return response()->json(['status'=>'success','message'=>'Thay đổi mật khẩu thành công, mật khẩu mới của bạn là <b>'.$request->newpassword.'</b>']);
-             
             }      
     }
     

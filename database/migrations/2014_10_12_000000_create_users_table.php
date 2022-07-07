@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('fullname');
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('phone')->nullable();
             $table->integer('role')->default(0);
             $table->integer('balance')->default(0);
             $table->integer('total_recharge')->default(0);

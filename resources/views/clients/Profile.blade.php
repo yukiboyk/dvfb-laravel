@@ -47,7 +47,7 @@
                         </div>
                         <input type="text" class="form-control" value="{{Auth::user()->formatBalance}} coin" disabled>
                     </div>
-                    <div class="d-flex">
+                    <div class="mb-3 d-flex">
                         <div class="avatar-xs d-block flex-shrink-0 me-3">
                             <span class="avatar-title rounded-circle fs-16 bg-danger">
                                 <i class="ri-add-circle-line"></i>
@@ -56,6 +56,7 @@
                         <input type="text" class="form-control" id="pinterestName"
                             placeholder="Username" value="{{Auth::user()->created_at}}" disabled>
                     </div>
+                    
 
                 </div>
            
@@ -97,35 +98,39 @@
             <div class="card-body p-4">
                 <div class="tab-content">
                     <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                        <div class="table-responsive">
-                            <table class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
-                                        <thead>
-                                            <tr style="text-align: center">
-                                                <th data-ordering="false">ID</th>
-                                                <th data-ordering="false">Trạng Thái</th>
-                                                <th data-ordering="false">IP log</th>
-                                                <th data-ordering="false">Thời Gian</th>
-                                                <th data-ordering="false">Thiết Bị</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $i = 1;
-                                            @endphp
-                                            @foreach ($checkLogs as $item)
-                                            <tr>
-                                                <td>{{$i++}}</td>
-                                                <td>{{$item->content}}</td>
-                                                <td>{{$item->ip}}</td>
-                                                <td>{{$item->created_at}}</td>
-                                                <td>{{$item->device}}</td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                </div>
-                            
+                      
+                            <div class="col-lg-12">
+                                    <div class="card-body" style="">
+                                        <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100% ;text-align: center">
+                                            <thead>
+                                                <tr>
+                                                    <th data-ordering="false">ID</th>
+                                                    <th data-ordering="false">Trạng Thái</th>
+                                                    <th data-ordering="false">IP log</th>
+                                                    <th data-ordering="false">Thời Gian</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $i = 1;
+                                                @endphp
+                                                @foreach ($checkLogs as $item)
+                                                <tr>
+                                                    <td>{{$i++}}</td>
+                                                    <td>{{$item->content}}</td>
+                                                    <td>{{$item->ip}}</td>
+                                                    <td>{{$item->created_at}}</td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                           
+                            <!--end col-->
+                       
                     </div>
+
                    <div class="tab-pane" id="changePassword" role="tabpanel">
                     <div id="save_msgList" role="alert">
 
@@ -195,137 +200,8 @@
                                         Authentication</a>
                                 </div>
                             </div>
-                            <div class="d-flex flex-column flex-sm-row mb-4 mb-sm-0 mt-2">
-                                <div class="flex-grow-1">
-                                    <h6 class="fs-14 mb-1">Secondary Verification</h6>
-                                    <p class="text-muted">The first factor is a password and the
-                                        second commonly includes a text with a code sent to your
-                                        smartphone, or biometrics using your fingerprint, face, or
-                                        retina.</p>
-                                </div>
-                                <div class="flex-shrink-0 ms-sm-3">
-                                    <a href="javascript:void(0);" class="btn btn-sm btn-primary">Set
-                                        up secondary method</a>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column flex-sm-row mb-4 mb-sm-0 mt-2">
-                                <div class="flex-grow-1">
-                                    <h6 class="fs-14 mb-1">Backup Codes</h6>
-                                    <p class="text-muted mb-sm-0">A backup code is automatically
-                                        generated for you when you turn on two-factor authentication
-                                        through your iOS or Android Twitter app. You can also
-                                        generate a backup code on twitter.com.</p>
-                                </div>
-                                <div class="flex-shrink-0 ms-sm-3">
-                                    <a href="javascript:void(0);"
-                                        class="btn btn-sm btn-primary">Generate backup codes</a>
-                                </div>
-                            </div>
                         </div>
-                        <div class="mb-3">
-                            <h5 class="card-title text-decoration-underline mb-3">Application
-                                Notifications:</h5>
-                            <ul class="list-unstyled mb-0">
-                                <li class="d-flex">
-                                    <div class="flex-grow-1">
-                                        <label for="directMessage"
-                                            class="form-check-label fs-14">Direct messages</label>
-                                        <p class="text-muted">Messages from people you follow</p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
-                                                role="switch" id="directMessage" checked />
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mt-2">
-                                    <div class="flex-grow-1">
-                                        <label class="form-check-label fs-14"
-                                            for="desktopNotification">
-                                            Show desktop notifications
-                                        </label>
-                                        <p class="text-muted">Choose the option you want as your
-                                            default setting. Block a site: Next to "Not allowed to
-                                            send notifications," click Add.</p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
-                                                role="switch" id="desktopNotification" checked />
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mt-2">
-                                    <div class="flex-grow-1">
-                                        <label class="form-check-label fs-14"
-                                            for="emailNotification">
-                                            Show email notifications
-                                        </label>
-                                        <p class="text-muted"> Under Settings, choose Notifications.
-                                            Under Select an account, choose the account to enable
-                                            notifications for. </p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
-                                                role="switch" id="emailNotification" />
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mt-2">
-                                    <div class="flex-grow-1">
-                                        <label class="form-check-label fs-14"
-                                            for="chatNotification">
-                                            Show chat notifications
-                                        </label>
-                                        <p class="text-muted">To prevent duplicate mobile
-                                            notifications from the Gmail and Chat apps, in settings,
-                                            turn off Chat notifications.</p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
-                                                role="switch" id="chatNotification" />
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-flex mt-2">
-                                    <div class="flex-grow-1">
-                                        <label class="form-check-label fs-14"
-                                            for="purchaesNotification">
-                                            Show purchase notifications
-                                        </label>
-                                        <p class="text-muted">Get real-time purchase alerts to
-                                            protect yourself from fraudulent charges.</p>
-                                    </div>
-                                    <div class="flex-shrink-0">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox"
-                                                role="switch" id="purchaesNotification" />
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h5 class="card-title text-decoration-underline mb-3">Delete This
-                                Account:</h5>
-                            <p class="text-muted">Go to the Data & Privacy section of your profile
-                                Account. Scroll to "Your data & privacy options." Delete your
-                                Profile Account. Follow the instructions to delete your account :
-                            </p>
-                            <div>
-                                <input type="password" class="form-control" id="passwordInput"
-                                    placeholder="Enter your password" value="make@321654987"
-                                    style="max-width: 265px;">
-                            </div>
-                            <div class="hstack gap-2 mt-3">
-                                <a href="javascript:void(0);" class="btn btn-soft-danger">Close &
-                                    Delete This Account</a>
-                                <a href="javascript:void(0);" class="btn btn-light">Cancel</a>
-                            </div>
-                        </div>
+                        
                     </div>
                     <!--end tab-pane-->
                 </div>
@@ -340,7 +216,11 @@
 
     <script src="{{ URL::asset('assets/js/pages/profile-setting.init.js') }}"></script>
     <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/libs/list.js/list.js.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/libs/list.pagination.js/list.pagination.js.min.js') }}"></script>
 
+    <!-- listjs init -->
+    <script src="{{ URL::asset('assets/js/pages/listjs.init.js') }}"></script>
     <script>         
         $.ajaxSetup({
           headers:{
@@ -385,4 +265,5 @@
     });
 
 </script>
+
 @endpush
