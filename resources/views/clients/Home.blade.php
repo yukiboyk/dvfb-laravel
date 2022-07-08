@@ -121,9 +121,9 @@
                                 <div class="timeline-box">
                                     <div class="timeline-text">
                                         <div class="d-flex">
-                                            <img src="{{ URL::asset('/images/avt197.jpg') }}" alt="" class="avatar-sm rounded" />
+                                            <img src="{{ webSetting('avatar_admin') }}" alt="" class="avatar-sm rounded" />
                                             <div class="flex-grow-1 ms-3">
-                                                <h5 class="mb-1" style="color: #ff0000"><b>Lê Mạnh</b> </h5>
+                                                <h5 class="mb-1" style="color: #ff0000"><b>{{webSetting('admin_name')}}</b> </h5>
                                                 <p class="text-dark mb-0" style="font-size: 20px">Mở server mem sv6 giá cực rẻ 
                                                     Mở thêm server like post V8, V9 giá cực rẻ 
                                                     Giảm giá sub sale Sv1 còn 1.x đ /  sub </p>

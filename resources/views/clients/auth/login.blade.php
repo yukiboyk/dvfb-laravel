@@ -24,10 +24,10 @@
                     <div class="text-center mt-sm-5 mb-4 text-white-50">
                         <div>
                             <a href="index" class="d-inline-block auth-logo">
-                                <img src="{{ URL::asset('assets/images/logo-light.png')}}" alt="" height="20">
+                                <img src="{{ URL::asset('images/logo.png')}}" alt="" height="20">
                             </a>
                         </div>
-                        <p class="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                        
                     </div>
                 </div>
             </div>
@@ -39,8 +39,8 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
-                                <h5 class="text-primary">Welcome Back !</h5>
-                                <p class="text-muted">Sign in to continue to Velzon.</p>
+                                <h5 class="text-primary">Xin chào đã quay trở lại !</h5>
+                                <p class="text-muted">Vui lòng đăng nhập để tiếp tục sử dụng dịch vụ.</p>
                             </div>
                            
                             <div class="p-2 mt-4">
@@ -70,8 +70,8 @@
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember_me">
-                                        <label class="form-check-label" for="auth-remember-check">Nhớ tôi?</label>
+                                        <input class="form-check-input" type="checkbox" name="remember_me" checked="checked" />
+                                        <label class="form-check-label" for="auth-remember-check" >Nhớ tôi?</label>
                                         <div class="float-end">
                                             <a href="{{route('showFormForgotPass')}}" class="text-muted">Quên Mật Khẩu?</a>
                                         </div>
@@ -110,7 +110,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center">
-                        <p class="mb-0 text-muted">&copy; <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                        <p class="mb-0 text-muted">&copy; <script>document.write(new Date().getFullYear())</script> DVMXH. Xây dựng và phát triển <i class="mdi mdi-heart text-danger"></i> by Yukiboyk</p>
                     </div>
                 </div>
             </div>

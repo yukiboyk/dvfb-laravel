@@ -21,4 +21,33 @@ function logsCreate($action,$ip,$header)
     ]);
 }
 
+function randStr($length = 10)
+{
+        $characters = '0123456789ACBDEFGHQ9876543210';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+     }
+        return $randomString;
+}
+
+function StatusCard($status)
+{
+    switch ($status) {
+        case 'PENDING':
+            return '<span class="badge bg-warning">Đang Xử Lý </span>';
+            break;
+        case 'SUCCESS':
+            return '<span class="badge bg-success">Thành Công </span>';
+            break;
+        case 'ERROR':
+            return '<span class="badge bg-danger">Thất Bại </span>';
+            break;
+        default:
+           return "error";
+            break;
+    }
+}
+
 ?>

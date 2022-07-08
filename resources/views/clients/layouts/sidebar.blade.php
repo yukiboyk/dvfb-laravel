@@ -48,7 +48,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link"  href="{{route('viewProfile')}}">
+                            <a class="nav-link menu-link"  href="{{route('upgradeLevel')}}">
                                 <i class="menu-icon">
                                     <img width="100%" src="{{url('images/icon_home/levels-up.svg')}}">
                                 </i> <span>Gói Tài Khoản</span>
@@ -64,7 +64,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#yukinaptien">
+                            <a class="nav-link menu-link" href="{{route('rechargeCard')}}">
                                 <i class="menu-icon">
                                     <img width="100%" src="{{url('images/icon_home/nap-card.svg')}}">
                                 </i>

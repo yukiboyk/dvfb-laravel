@@ -135,7 +135,7 @@
                     <div id="save_msgList" role="alert">
 
                     </div>
-                        <form action="{{route('changePassword')}}" method="POST" id="changePasswordForm">
+                        <form action="{{route('changePassword')}}" method="POST" id="ajaxSubmitForm">
                             @csrf
                             <div class="row g-2">
                                 <div class="col-lg-4">
@@ -221,49 +221,6 @@
 
     <!-- listjs init -->
     <script src="{{ URL::asset('assets/js/pages/listjs.init.js') }}"></script>
-    <script>         
-        $.ajaxSetup({
-          headers:{
-                'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-                     }
-                    });
-                  
-    /* UPDATE ADMIN PERSONAL INFO */
-    $('#changePasswordForm').on('submit', function(e){
-         e.preventDefault();
-
-        $.ajax({
-            url:$(this).attr('action'),
-            method:$(this).attr('method'),
-            data: new FormData(this),
-            processData:false,
-            dataType:'JSON',
-            contentType:false,
-            beforeSend:function(){
-              $('#btnsubmit').attr('disabled', 'disabled').html('Loadding...')
-            //   $(document).find('span.error-text').text('');
-              $('#save_msgList').html("");
-              $('#save_msgList').removeClass('alert alert-danger');
-            },
-            complete: function(){
-          $('#btnsubmit').removeAttr('disabled').html('XÁC NHẬN')
-            },
-            success:function(data){
-            if(data.status == 'fails'){
-              $.each(data.message, function(prefix, val){
-                $('#save_msgList').addClass('alert alert-danger');
-                $('#save_msgList').append('<li>' + val + '</li>');
-                // $('span.'+prefix+'_error').text(val[0]);
-              });
-            }else{
-              $('#changePasswordForm')[0].reset();
-              $('#save_msgList').addClass('alert alert-success');
-              $('#save_msgList').html(data.message);
-              }
-            }
-         });
-    });
-
-</script>
+    <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>
 
 @endpush

@@ -58,10 +58,13 @@ class User extends Authenticatable
         return Attribute::make(function () {
             switch($this->role) {
                 case '0':
-                    return "<b style='color: blue;'>Thành viên</b>";
+                    return "<b style='color: dark;'>Thành viên</b>";
                     break;
                 case '1':
-                    return "<b style='color: green;'>VIP Đại Lý</b>";
+                    return "<b style='color: blue;'>Cộng Tác Viên</b>";
+                    break;
+                case '2':
+                    return "<b style='color: green'>Tổng Đại Lý</b>";
                     break;
                 case '9':
                     return "<b style='color: red;'>Quản trị viên</b>";

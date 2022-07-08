@@ -33,6 +33,9 @@ class HomeController extends Controller
         return view('clients.Profile',compact('checkLogs'));
     }
 
-    
+    public function upgradeLevel()
+    {
+        return view('clients.Up-level');
+    }
 
 }

@@ -19,7 +19,7 @@ class CheckUserLogin
     {
         if (Auth::user()->ban == true OR Auth::user()->balance < 0) {
             Auth::logout();
-            return redirect()->route('showFormLogin')->with('message','Account is locked by Admin');
+            return redirect()->route('showFormLogin')->with('error','Account is locked by Admin');
         }
         return $next($request);
     }

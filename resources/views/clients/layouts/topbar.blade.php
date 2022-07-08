@@ -245,6 +245,7 @@
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
+                        <h5 class="dropdown-header">Xin Chào : <strong>{{Auth::user()->fullname}}</strong></h5>
                         <!-- item-->
                         <a class="dropdown-item" href="{{route('viewProfile')}}"><i
                                 class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span

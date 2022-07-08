@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ForgotPassword extends FormRequest
+class CardRecharge extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,17 @@ class ForgotPassword extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email:filter|exists:users,email'
-         ];
-
-        
+            'telco' => 'required',
+            'code' => 'required',
+            'serial' => 'required',
+            'amount' => 'required',
+        ];
     }
 
     public function messages()
     {
         return [
-            'required' => 'Trường :attribute Không được bỏ trống',
-            'email' => 'Không đúng định dạng email',
-            'exists' => 'Địa chỉ email này không tồn tại trên hệ thống'
+            'required' => 'Trường :attribute không được bỏ trống'
         ];
     }
 }
