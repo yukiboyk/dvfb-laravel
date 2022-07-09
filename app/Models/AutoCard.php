@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class AutoCard extends Model
 {
     use HasFactory;
+    protected $table = 'auto_cards';
     protected $fillable = [
         'order_id',
         'username',

@@ -50,4 +50,13 @@ function StatusCard($status)
     }
 }
 
+function responseCustom($msg)
+    {
+        $result = [
+            'status' => 'fails',
+            'message' => $msg,
+        ];
+    
+        return response()->json($result);
+    }
 ?>

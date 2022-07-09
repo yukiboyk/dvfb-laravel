@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Clients\Recharge;
+use App\Http\Controllers\Clients\RechargeController;
 use App\Http\Controllers\Clients\AuthController;
 use App\Http\Controllers\Clients\HomeController;
 use App\Http\Controllers\Clients\TwoFaceAuthController;
@@ -25,8 +25,8 @@ Route::middleware(['checkUser.auth','2fa'])->prefix('system')->group(function ()
     Route::get('/profile',[HomeController::class,'viewProfile'])->name('viewProfile');
     Route::post('/change-password',[AuthController::class,'changePassword'])->name('changePassword');
     Route::get('/upgrade-level',[HomeController::class,'upgradeLevel'])->name('upgradeLevel');
-    Route::get('/recharge-card',[Recharge::class,'rechargeCard'])->name('rechargeCard');
-    Route::post('/recharge-card',[Recharge::class,'cardSubmit'])->name('cardSubmit');
+    Route::get('/recharge-card',[RechargeController::class,'rechargeCard'])->name('rechargeCard');
+    Route::post('/recharge-card',[RechargeController::class,'cardSubmit'])->name('cardSubmit');
 
 });
 

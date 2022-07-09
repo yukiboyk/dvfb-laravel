@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Requests\BaseRequest;
 use Illuminate\Foundation\Http\FormRequest;
 
-class CardRecharge extends FormRequest
+class Test extends BaseRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +25,8 @@ class CardRecharge extends FormRequest
     public function rules()
     {
         return [
-            'telco' => 'required',
-            'code' => 'required',
-            'serial' => 'required',
-            'amount' => 'required',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'required' => 'Trường :attribute không được bỏ trống'
+           'username'=> 'required',
+           'password' => 'required'
         ];
     }
 }

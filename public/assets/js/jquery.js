@@ -14,7 +14,7 @@ $(document).ready(function () {
             method = $(this).attr("method"),
             data = $(this).serialize(),
             button = $(this).find("button[type=submit]");
-
+        
         submitForm(url, method , data, button);
     });
 });
@@ -37,15 +37,13 @@ function submitForm(url, method , data, button) {
         },
         success:function(data){
             if(data.status == 'fails'){
-                if (typeof data === 'object') { 
                     $.each(data.message, function(prefix, val){
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: val,
+                            text: val
                           });
                       });
-                  }
             }else{
               $('#ajaxSubmitForm')[0].reset();
               Swal.fire({
@@ -59,6 +57,7 @@ function submitForm(url, method , data, button) {
     };
     $.ajax(setting);
 }
+
 
     
 

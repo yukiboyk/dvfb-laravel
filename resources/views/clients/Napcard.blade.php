@@ -100,27 +100,30 @@
                 </div>
                 <div class="table-responsive p-0">
                     <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100% ;text-align: center">
-                        <thead class="table-light">
+                        <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>MGD</th>
-                                <th>Serial</th>
                                 <th>Mã Thẻ</th>
                                 <th>Mệnh giá</th>
-                                <th>Thực nhận</th>
                                 <th>Trạng thái</th>
                                 <th>Thời gian</th>
+                                <th>Ghi Chú</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($history_card as $item)
+                            @php
+                            $i = 1;
+                            @endphp
+                            @foreach ($history_card as $hiscard)
                             <tr>
-                                <td>#<b>{{$item->order_id}}</b></td>
-                                <td>{{$item->serial}}</td>
-                                <td>{{$item->code}}</td>
-                                <td><b style="color: red;">{{number_format($item->amount)}} đ</b></td>
-                                <td><b style="color: green;">{{number_format($item->receive_amount)}} coin</b></td>
-                                <td>{!! StatusCard($item->status) !!}</td>
-                                <td>{{$item->created_at}}</td>
+                                <td>{{$i++}}</td>
+                                <td><b>{{$hiscard->order_id}}</b></td>
+                                <td>{{$hiscard->code}}</td>
+                                <td><b style="color: red;">{{number_format($hiscard->receive_amount)}} đ</b></td>
+                                <td>{!! StatusCard($hiscard->status) !!}</td>
+                                <td>{{$hiscard->created_at}}</td>
+                                <td>{{$hiscard->note}}</td>
                             </tr>
                             @endforeach 
                             
@@ -143,11 +146,11 @@
 <script src="{{ URL::asset('/assets/js/app.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>
 <script>
-    function totalPrice() {
-        var total = 0;
-        var amount = $("#amount").val();
-        total = amount - amount * {{websetting('ck_card')}}/100;
-        $('#ketqua').html(total.toString().replace(/(.)(?=(\d{3})+$)/g, '$1.'));
-    }
-    </script>
+function totalPrice() {
+    var total = 0;
+    var amount = $("#amount").val();
+    total = amount - amount * {{websetting('ck_card')}}/100;
+    $('#ketqua').html(total.toString().replace(/(.)(?=(\d{3})+$)/g, '$1.'));
+}    
+</script>
 @endpush

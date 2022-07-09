@@ -13,6 +13,9 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
+        // if(\Request::ip() == '127.0.0.1'){
+        //     return false;
+        // }
         return true;
     }
 

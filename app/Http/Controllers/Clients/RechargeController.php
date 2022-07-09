@@ -4,41 +4,23 @@ namespace App\Http\Controllers\Clients;
 
 use App\Models\AutoCard;
 use Illuminate\Http\Request;
-use App\Http\Requests\CardRecharge;
+use App\Http\Requests\CardRechargeRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
-class Recharge extends Controller
+class RechargeController extends Controller
 {
     public function rechargeCard()
     {
         $history_card = AutoCard::where('username',Auth::user()->username)
-        ->orderBy('id', 'DESC')
+        ->orderBy('created_at', 'DESC')
         ->get();
         return view('clients.Napcard',compact('history_card'));
     }
-    public function cardSubmit(Request $request)
+    public function cardSubmit(CardRechargeRequest $request)
     {
-        $validator = Validator::make($request->all(),[
-            'telco' => 'required',
-            'serial' => 'required|min:8',
-            'amount' => 'required',
-            'code' => 'required|min:8',
-
-        ],[
-            'telco.required' => 'Vui lòng chọn loại thẻ',
-            'serial.required' => 'Vui lòng Nhập serial',
-            'amount.required' => 'Vui lòng chọn mệnh giá',
-            'code.required' => 'Vui lòng nhập mã thẻ cào',
-            'serial.min' => 'Serial không hợp lệ',
-            'code.min' => 'Mã thẻ không đúng định dạng thẻ cào',
-
-        ]);
-        if ($validator->fails()) {
-            return response()->json(['status'=> 'fails','message'=>$validator->errors()]);
-        }
          $order_id = randStr();
          $xuly  = Http::withHeaders([
             'Content-Type' => 'application/json'

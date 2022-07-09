@@ -98,7 +98,6 @@
             <div class="card-body p-4">
                 <div class="tab-content">
                     <div class="tab-pane active" id="personalDetails" role="tabpanel">
-                      
                             <div class="col-lg-12">
                                     <div class="card-body" style="">
                                         <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100% ;text-align: center">
