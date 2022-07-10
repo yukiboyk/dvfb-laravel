@@ -28,12 +28,14 @@ function submitForm(url, method , data, button) {
         processData:false,
         dataType:'JSON',
         beforeSend: function () {
+            $("#ajaxSubmitForm").LoadingOverlay("show")
             button
                 .prop("disabled", !0)
                 .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...');
         },
         complete: function () {
             button.prop("disabled", !1).html(textButton);
+            $("#ajaxSubmitForm").LoadingOverlay("hide",true)
         },
         success:function(data){
             if(data.status == 'fails'){

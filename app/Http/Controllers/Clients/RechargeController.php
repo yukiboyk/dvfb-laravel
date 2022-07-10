@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Clients;
 
+use App\Models\User;
 use App\Models\AutoCard;
 use Illuminate\Http\Request;
-use App\Http\Requests\CardRechargeRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\CardRechargeRequest;
 
 class RechargeController extends Controller
 {
@@ -50,5 +51,57 @@ class RechargeController extends Controller
         }
          
           return response()->json(['status'=>'fails','message'=>$getbody]);
+    }
+
+    public function callback_card(Request $request)
+    {
+        if ($request->callback_sign && $request->status) {
+            $code = $request->code;
+            $serial = $request->serial;
+            $telco = $request->telco;
+            $amount = $request->amount; ///số tiền nhận được
+            $value = $request->value; ///giá trị thực
+            ///kiểm tra xem code và serial có trong database không
+          $checkCard = AutoCard::where('code', $code)
+           ->where('serial', $serial)
+           ->where('telco', $telco)
+           ->where('status','PENDING')
+           ->firstOrFail();
+           
+          if ($request->status == 1) {
+            $setSuccessCard = $checkCard->update([
+                'status' => 'SUCCESS',  
+                'note'   => 'xử lý hoàn tất'
+            ]);
+            /// CỘNG TIỀN CHO USER
+           $userID = User::where('username',$checkCard->username)->first();
+           $addMoney = $userID->update([
+                'balance' => $userID->balance + $checkCard->receive_amount,
+                'total_recharge' => $userID->total_recharge + $checkCard->receive_amount,
+           ]);
+
+          }elseif ($request->status == 2) {
+            $setSuccessCard = $checkCard->update([
+                'status' => 'SUCCESS',
+                'note'   => 'Thẻ sai mệnh giá -50% +'.number_format($checkCard->receive_amount * 50 / 100).' coin' ,
+            ]);
+             /// CỘNG TIỀN CHO USER
+           $userID = User::where('username',$checkCard->username)->first();
+           $addMoney = $userID->update([
+                'balance' => $userID->balance + ($checkCard->receive_amount * 50 / 100),
+                'total_recharge' => $userID->total_recharge + ($checkCard->receive_amount * 50 / 100),
+           ]);
+          }else{
+            $setSuccessCard = $checkCard->update([
+                'status' => 'ERROR',
+                'note'   => 'Thẻ sai',
+            ]);
+          }
+        }
+             return (object)
+             [
+                 'status' => 'error',
+                 'message' => 'Unauthorized'
+             ];
     }
 }

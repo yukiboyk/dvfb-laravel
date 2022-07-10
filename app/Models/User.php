@@ -25,6 +25,11 @@ class User extends Authenticatable
         'username',
         'fullname',
         'email',
+        'balance',
+        'total_recharge',
+        'discount',
+        'phone',
+        'ban',
         'password',
         'access_token',
     ];

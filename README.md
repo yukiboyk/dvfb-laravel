@@ -11,6 +11,10 @@
 Xin chào tôi là Yukiboy . đây là dự án Laravel đầu tiên của tôi. 
 - FACEBOOK -  [Lê Mạnh](https://fb.com/WFT.Tom).
 - Telegram -  [Lê Mạnh](https://t.me/manhbf).
-## License
+## Lib
+- Bootstrap Toggle : [https://www.bootstraptoggle.com](https://www.bootstraptoggle.com/).
+- Notification ToaStr : [https://github.com/CodeSeven/toastr](https://github.com/CodeSeven/toastr).
+- jquery-loading-overlay : [https://gasparesganga.com/labs/jquery-loading-overlay](https://gasparesganga.com/labs/jquery-loading-overlay).
 
+## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

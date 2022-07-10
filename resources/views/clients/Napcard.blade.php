@@ -120,7 +120,7 @@
                                 <td>{{$i++}}</td>
                                 <td><b>{{$hiscard->order_id}}</b></td>
                                 <td>{{$hiscard->code}}</td>
-                                <td><b style="color: red;">{{number_format($hiscard->receive_amount)}} đ</b></td>
+                                <td><b style="color: red;">{{number_format($hiscard->amount)}} đ</b></td>
                                 <td>{!! StatusCard($hiscard->status) !!}</td>
                                 <td>{{$hiscard->created_at}}</td>
                                 <td>{{$hiscard->note}}</td>
